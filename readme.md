@@ -4,6 +4,10 @@
 
 > *"Don't let auditors cry (by passing quickly)"*
 
+
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/8a25f29d-ecbb-4f91-8584-528badd62a2a" />
+
+
 ---
 
 ## 📊 Overview
@@ -124,6 +128,24 @@ This project implements industry-leading security practices:
 - **Progress Trends** - Visual timeline of improvements
 - **Compliance Heatmap** - Color-coded status grid
 
+
+<img width="1606" height="733" alt="image" src="https://github.com/user-attachments/assets/c8028a25-6bf0-4849-bb32-e0ccb6b08ca9" />
+
+
+<img width="1379" height="878" alt="image" src="https://github.com/user-attachments/assets/f28e6333-9f46-4165-8d46-f5519f634b72" />
+
+
+
+<img width="1556" height="776" alt="image" src="https://github.com/user-attachments/assets/001212a3-c765-4405-bb40-eb4dd91c18a1" />
+
+
+
+<img width="1284" height="947" alt="image" src="https://github.com/user-attachments/assets/bc16a1ac-4083-4b3a-bb43-cf8f38918160" />
+
+
+
+
+
 ## 📋 Assessment Features
 
 - **Interactive Questionnaire** - Guided assessment flow
@@ -132,6 +154,10 @@ This project implements industry-leading security practices:
 - **Notes System** - Add detailed notes per requirement
 - **Evidence Templates** - Know what auditors look for
 - **Framework Mapping** - See which controls satisfy multiple frameworks
+
+
+<img width="1254" height="852" alt="image" src="https://github.com/user-attachments/assets/150e8899-e435-4c81-ad8c-b69d210387ca" />
+
 
 ## 📁 Evidence Management
 
@@ -143,6 +169,10 @@ This project implements industry-leading security practices:
 - **Bulk Operations** - Upload multiple files at once
 - **Filter & Search** - Find evidence by requirement or filename
 
+
+<img width="1448" height="851" alt="image" src="https://github.com/user-attachments/assets/a66c2e05-afe1-47db-8277-b36b0c5df42a" />
+
+
 ## 📄 Reports & Export
 
 - **PDF Generation** - Audit-ready reports with jsPDF
@@ -152,6 +182,11 @@ This project implements industry-leading security practices:
 - **Technical Report** - Detailed findings by requirement
 - **Audit Package** - Complete documentation package
 
+
+<img width="1209" height="850" alt="image" src="https://github.com/user-attachments/assets/831eeb19-5bfb-4083-abc5-773bde926dc8" />
+
+
+
 ## 📅 Timeline Tracking
 
 - **Event Log** - Record all compliance activities
@@ -159,6 +194,11 @@ This project implements industry-leading security practices:
 - **Visual Timeline** - Chronological view of your journey
 - **Type Indicators** - Milestone, Evidence, Action, Deadline
 - **Search & Filter** - Find events by type or date
+
+
+<img width="1235" height="880" alt="image" src="https://github.com/user-attachments/assets/9e584bae-7919-4287-822c-1992ed625ad9" />
+
+
 
 ## 🎯 Audit Simulation
 
@@ -178,6 +218,11 @@ This project implements industry-leading security practices:
 - **Gap Analysis** - Find areas where PCI controls don't map to other frameworks
 - **Coverage Visualizer** - See at a glance which requirements have framework mappings
 
+
+<img width="1222" height="901" alt="image" src="https://github.com/user-attachments/assets/10c8f63a-4110-4b42-97e3-118b4abf8bb1" />
+
+
+
 ## 📚 Documentation
 
 - **PCI DSS Requirements Explained** - Deep dive into each requirement
@@ -195,6 +240,11 @@ This project implements industry-leading security practices:
 - **Event Logging** - Complete audit trail of all security events
 - **Rate Limiting Monitor** - Watch for abuse prevention
 - **CSP Violations** - Track Content Security Policy violations
+
+
+<img width="1318" height="896" alt="image" src="https://github.com/user-attachments/assets/7a3fe224-8f8c-443a-b10d-49956de18096" />
+
+
 
 ## 🚀 Deployment
 
