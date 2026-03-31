@@ -1,6 +1,7 @@
 'use client'
 
 import Navigation from '@/components/navigation'
+import Link from 'next/link'
 import { useState, useEffect, Suspense, useCallback } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { logSecurityEvent, validateInput, sanitizeInput, checkRateLimit } from '@/lib/security'

@@ -3,7 +3,7 @@
 import Navigation from '@/components/navigation'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { getAssessment, updateRequirementStatus, getComplianceStats, getEvidenceByRequirement } from '@/lib/db'
+import { getAssessment, updateRequirementStatus, getComplianceStats, getEvidenceByRequirement, createDefaultAssessment } from '@/lib/db'
 import { EVIDENCE_TEMPLATES, getFrameworkMapping } from '@/lib/data'
 
 const statusColors: Record<string, string> = {
@@ -28,24 +28,54 @@ export default function AssessmentPage() {
   const [showMapping, setShowMapping] = useState(false)
   
   useEffect(() => {
-    const assessment = getAssessment()
-    setAssessment(assessment)
-    setStats(getComplianceStats(assessment))
+    try {
+      const assessmentData = getAssessment()
+      setAssessment(assessmentData)
+      if (assessmentData && assessmentData.requirements) {
+        setStats(getComplianceStats(assessmentData))
+      }
+    } catch (error) {
+      console.error('Error loading assessment:', error)
+      setAssessment(createDefaultAssessment())
+      setStats({ total: 12, compliant: 0, partial: 0, notStarted: 12, nonCompliant: 0, percentage: 0, weightedPercentage: 0, riskLevel: { level: 'Critical', color: '#ef4444', description: 'Not audit ready' } })
+    }
   }, [])
   
   const handleStatusChange = (reqId: number, newStatus: string, notes?: string) => {
-    updateRequirementStatus(reqId, newStatus, notes)
-    const updated = getAssessment()
-    setAssessment(updated)
-    setStats(getComplianceStats(updated))
+    try {
+      updateRequirementStatus(reqId, newStatus, notes)
+      const updated = getAssessment()
+      setAssessment(updated)
+      if (updated && updated.requirements) {
+        setStats(getComplianceStats(updated))
+      }
+    } catch (error) {
+      console.error('Error updating requirement status:', error)
+    }
   }
   
   if (!assessment) return <div className="min-h-screen bg-slate-900" />
   
-  const selectedRequirement = assessment.requirements.find((r: any) => r.id === selectedReq)
+  const selectedRequirement = assessment?.requirements?.find((r: any) => r.id === selectedReq)
   const templates = selectedRequirement ? EVIDENCE_TEMPLATES[selectedRequirement.requirement_number] || [] : []
   const frameworkMap = selectedRequirement ? getFrameworkMapping(selectedRequirement.requirement_number) : null
   const evidenceFiles = selectedRequirement ? getEvidenceByRequirement(selectedRequirement.requirement_number) : []
+
+  // Default stats fallback
+  const safeStats = stats || {
+    total: 12,
+    compliant: 0,
+    partial: 0,
+    notStarted: 12,
+    nonCompliant: 0,
+    percentage: 0,
+    weightedPercentage: 0,
+    riskLevel: {
+      level: 'Critical',
+      color: '#ef4444',
+      description: 'Not audit ready'
+    }
+  }
   
   return (
     <main className="min-h-screen bg-slate-900 pb-20">
@@ -59,8 +89,8 @@ export default function AssessmentPage() {
             <p className="text-slate-400 mt-1">{assessment.name}</p>
           </div>
           <div className="text-right">
-            <div className="text-3xl font-bold text-emerald-400">{stats?.percentage}%</div>
-            <div className="text-sm text-slate-400">{stats?.compliant} of 12 compliant</div>
+            <div className="text-3xl font-bold text-emerald-400">{safeStats.percentage}%</div>
+            <div className="text-sm text-slate-400">{safeStats.compliant} of 12 compliant</div>
           </div>
         </div>
         
@@ -68,23 +98,23 @@ export default function AssessmentPage() {
         <div className="mb-8">
           <div className="flex justify-between text-sm mb-2">
             <span className="text-slate-400">Overall Progress</span>
-            <span className="text-emerald-400 font-semibold">{stats?.weightedPercentage}% weighted</span>
+            <span className="text-emerald-400 font-semibold">{safeStats.weightedPercentage}% weighted</span>
           </div>
           <div className="w-full h-4 bg-slate-700 rounded-full overflow-hidden">
             <div 
               className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500"
-              style={{ width: `${stats?.percentage}%` }}
+              style={{ width: `${safeStats.percentage}%` }}
             />
           </div>
           <div className="flex justify-between mt-2 text-xs text-slate-500">
-            <span>Risk Level: <span style={{ color: stats?.riskLevel.color }}>{stats?.riskLevel.level}</span></span>
-            <span>{stats?.riskLevel.description}</span>
+            <span>Risk Level: <span style={{ color: safeStats.riskLevel.color }}>{safeStats.riskLevel.level}</span></span>
+            <span>{safeStats.riskLevel.description}</span>
           </div>
         </div>
         
         {/* Requirements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {assessment.requirements.map((req: any) => (
+          {assessment?.requirements?.map((req: any) => (
             <div 
               key={req.id}
               className={`bg-slate-800 rounded-xl border p-6 cursor-pointer transition ${

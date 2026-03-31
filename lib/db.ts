@@ -56,7 +56,7 @@ const ONBOARDING_KEY = 'pci-dss-onboarding'
 const THEME_KEY = 'pci-dss-theme'
 
 // Initialize default assessment
-function createDefaultAssessment(): Assessment {
+export function createDefaultAssessment(): Assessment {
   return {
     id: 1,
     name: 'Q1 2026 Assessment',
