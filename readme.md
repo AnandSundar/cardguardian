@@ -5,7 +5,8 @@
 > *"Don't let auditors cry (by passing quickly)"*
 
 
-<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/8a25f29d-ecbb-4f91-8584-528badd62a2a" />
+<img width="1536" height="1024" alt="CARDGuardian" src="https://github.com/user-attachments/assets/f49eae0a-237e-41a6-a20c-ec5cd0443ebb" />
+
 
 
 ---
